@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>Python Flask Upload and display image</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body background="https://thumbs.dreamstime.com/z/healthcare-technology-doctor-using-digital-tablet-icon-medical-network-hospital-background-162019727.jpg">
+<p><h1 align="center">Black Fungus Identifer</h1></p>
+<div class="container">
+<div class="row">
+    <h2>Select a file to upload</h2>
+    <p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </p>
+
+
+
+
+
+    <form method="post" action="/" enctype="multipart/form-data">
+        <dl>
+            <p>
+                <input type="file" name="file" class="form-control" autocomplete="off" required>
+            </p>
+        </dl>
+        <p>
+            <input type="submit" value="Submit" class="btn btn-info">
+        </p>
+    </form>
+    
+    
+    
+        {% if filename %}
+        
+    
+    <div class="container">
+  <div class="row">
+    <div class="col">
+      <img src="{{ url_for('display_image', filename=filename) }}">
+    </div>
+    <div class="col">
+      <h2>Test Reult : {{result}}</h2>
+    </div>
+    <div class="col">
+      <h2>Test confidence Level : {{confidence}}</h2>
+    </div>
+
+  </div>
+</div>
+    
+
+    {% endif %}
+    
+    
+    
+</div>
+</div>
+</body>
+</html>
+
